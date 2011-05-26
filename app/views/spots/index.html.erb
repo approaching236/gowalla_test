@@ -1,1 +1,4 @@
 <p>Howdy!</p>
+<%- @spots.each do |spot| %>
+  <p><%= spot.name %></p>
+<%- end -%>

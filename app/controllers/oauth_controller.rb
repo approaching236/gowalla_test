@@ -1,3 +1,6 @@
+gem 'oauth'
+require 'oauth/consumer'
+
 class OauthController < ApplicationController
   def start
     redirect_to client.web_server.authorize_url(
@@ -18,8 +21,8 @@ class OauthController < ApplicationController
 
   protected
     def client
-      @client ||= OAuth2::Client.new(
-        'c3a5af57acfc49629f14372c8203052b', 'e38149db0f384fbf8ed63965e7fd8160', :site => 'http://young-rain-286.heroku.com'
+      @client ||= OAuth2::Consumer.new(
+        'c3a5af57acfc49629f14372c8203052b', 'e38149db0f384fbf8ed63965e7fd8160', :site => 'http://api.gowalla.com'
       )
     end
 end
