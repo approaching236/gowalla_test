@@ -1,4 +1,20 @@
-<p>Howdy!</p>
-<%- @spots.each do |spot| %>
-  <p><%= spot.name %></p>
-<%- end -%>
+<table>
+  <tr>
+    <th><%= link_to 'Name', :controller => "spots", :sort => "name" %><td>
+    <th><%= link_to 'Region', :controller => "spots", :sort => "region" %><td>
+    <th><%= link_to 'Checkins Count', :controller => "spots", :sort => "checkins" %><td>
+    <th><%= link_to 'Image', :controller => "spots", :sort => "image" %><td>
+    <th><%= link_to 'Trending Level', :controller => "spots", :sort => "trending" %><td>
+    <th><%= link_to 'Checkins Count', :controller => "spots", :sort => "checkin" %><td>
+  </tr>
+<%- @spots['spots'].each do |spot| %>
+  <tr>
+    <td><%= link_to spot['name'], "http://gowalla.com" + spot['url'] %><td>
+    <td><%= spot['address']['region'] %> / <%= spot['address']['locality'] %><td>
+    <td><%= spot['checkins_count'] %><td>
+    <td><%= link_to 'image', spot['image_url'] %><td>
+    <td><%= spot['trending_level'] %><td>
+    <td><%= spot['checkins_count'] %><td>
+  </tr>
+<%- end %>
+</table>
